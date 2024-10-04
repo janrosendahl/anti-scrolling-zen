@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience the end of doom-scrolling and find your inner zen with our anti-scrolling webpage.">
+    <meta name="keywords" content="zen, anti-scrolling, mindfulness, relaxation, stop doom-scrolling">
+    <title>Anti-Scrolling Zen</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .post-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .post-info {
+            text-align: left;
+        }
+        .post-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .post-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #888;
+        }
+        .zen-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .like-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .like-button:hover {
+            background-color: #45a049;
+        }
+        .scroll-message {
+            margin-top: 50px;
+            font-size: 18px;
+            color: #555;
+        }
+        .end-of-scroll {
+            margin-top: 50px;
+            font-size: 22px;
+            color: red;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        @media (max-width: 600px) {
+            .zen-image {
+                max-width: 90%;
+                margin-top: 10vh;
+            }
+            .like-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <!-- Post Header: Profile picture and user info -->
+        <div class="post-header">
+            <img class="profile-pic" src="profile_picture_url_here" alt="Profile Picture">
+            <div class="post-info">
+                <h3>ZenMaster</h3>
+                <p>Just now</p>
+            </div>
+        </div>
+
+        <!-- Responsive image with WebP format and fallback to PNG/JPEG for older browsers -->
+        <picture>
+            <img class="zen-image" id="zen-image" src="./img1.webp" alt="A peaceful scene symbolizing the end of doomscrolling">
+        </picture>
+
+        <!-- Like button and like count -->
+        <div>
+            <button class="like-button" onclick="increaseLikes()" aria-label="Like Button">Like</button>
+            <span id="like-count">0 Likes</span>
+        </div>
+    </div>
+
+    <!-- Scroll message and end-of-scroll alert -->
+    <div class="scroll-message">
+        Don't scroll for more...
+    </div>
+    <div class="end-of-scroll" id="end-of-scroll" role="alert">
+        End of Doomscrolling
+    </div>
+
+    <script>
+        let likes = 0;
+        function increaseLikes() {
+            likes++;
+            document.getElementById('like-count').innerText = likes + ' Likes';
+        }
+
+        window.addEventListener('scroll', function() {
+            const endMessage = document.getElementById('end-of-scroll');
+            let scrollY = window.scrollY;
+
+            if (scrollY > 100) {
+                endMessage.style.opacity = 1;
+            } else {
+                endMessage.style.opacity = 0;
+            }
+        });
+    </script>
+</body>
+</html>
